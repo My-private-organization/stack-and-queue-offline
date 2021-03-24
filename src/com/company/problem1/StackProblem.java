@@ -8,11 +8,15 @@ public class StackProblem {
         Scanner scanner = new Scanner(System.in);
         String inputExpression = scanner.nextLine();
 
-        ExpressionParser expressionParser = new ExpressionParser();
+        inputExpression = inputExpression.replaceAll(" ", "");
 
         try
         {
-            System.out.println("Valid expression, Computed value: "+expressionParser.evaluate(inputExpression));
+            MakeMathematicalExpressionFromString makeMathematicalExpressionFromString =
+                    new MakeMathematicalExpressionFromString(inputExpression);
+
+            System.out.println("Valid expression, Computed value: "+
+                    makeMathematicalExpressionFromString.getValueOfExpression());
         }catch (Exception e)
         {
             System.out.println("Not valid.");

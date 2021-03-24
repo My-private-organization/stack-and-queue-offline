@@ -24,7 +24,9 @@ public class StringConverter {
             if(letterCount[c - 'a'] == 1)
                 myQueue.enQueue(c);
 
-            while(!myQueue.isEmpty() && letterCount[myQueue.peek() - 'a'] > 1)
+            while(!myQueue.isEmpty() &&
+                    letterCount[myQueue.peek() - 'a'] > 1)
+
                 myQueue.deQueue();
 
             if(myQueue.isEmpty())

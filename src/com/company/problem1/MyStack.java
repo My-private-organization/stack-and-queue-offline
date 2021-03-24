@@ -1,7 +1,6 @@
 package com.company.problem1;
 
 import java.util.ArrayList;
-import java.util.EmptyStackException;
 import java.util.List;
 
 public class MyStack<T> {
@@ -18,11 +17,10 @@ public class MyStack<T> {
         myArrayList.add(element);
     }
 
-    public T pop()
-    {
+    public T pop() throws Exception {
         if(myArrayList.isEmpty())
         {
-            throw new EmptyStackException();
+            throw new Exception("Stack is empty");
         }
 
         T lastElement = myArrayList.get(size() - 1);
