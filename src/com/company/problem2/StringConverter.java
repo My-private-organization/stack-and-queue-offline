@@ -9,34 +9,32 @@ public class StringConverter {
         Scanner scanner = new Scanner(System.in);
         String oldString = scanner.nextLine();
 
+        StringBuilder stringBuilder = new StringBuilder();
+
         MyQueue myQueue = new MyQueue();
 
         int[] letterCount = new int[26];
-
         int length = oldString.length();
 
-        char[] ans = new char[length];
 
         for(int i = 0; i < length; i++)
         {
-            char c = oldString.charAt(i);
+            char ch = oldString.charAt(i);
 
-            letterCount[c - 'a']++;
+            letterCount[ch - 'a']++;
 
-            if(letterCount[c - 'a'] == 1)
-                myQueue.enQueue(c);
+            if(letterCount[ch - 'a'] == 1)
+                myQueue.enQueue(ch);
 
-            while(!myQueue.isEmpty() &&
-                    letterCount[myQueue.peek() - 'a'] > 1)
-
+            while(!myQueue.isEmpty() && letterCount[myQueue.peek() - 'a'] > 1)
                 myQueue.deQueue();
 
             if(myQueue.isEmpty())
-                ans[i] = '#';
+                stringBuilder.append('#');
             else
-                ans[i] = myQueue.peek();
+                stringBuilder.append(myQueue.peek());
         }
 
-        System.out.println(ans);
+        System.out.println(stringBuilder);
     }
 }
