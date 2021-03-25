@@ -24,7 +24,26 @@ public class MakeMathematicalExpressionFromString {
             {
                 while (operatorStack.peek() != '(')
                 {
-                    processOperationOfOperator(operatorStack.pop());
+                    char ch = operatorStack.pop();
+
+                    if (ch =='#')
+                    {
+                        int top = myIntegerStack.pop();
+                        myIntegerStack.push(-top);
+                    }
+
+                    else
+                    {
+                        int rightOperand = myIntegerStack.pop();
+                        int leftOperand = myIntegerStack.pop();
+
+                        switch (ch) {
+                            case '+' -> myIntegerStack.push(leftOperand + rightOperand);
+                            case '-' -> myIntegerStack.push(leftOperand - rightOperand);
+                            case '*' -> myIntegerStack.push(leftOperand * rightOperand);
+                            case '/' -> myIntegerStack.push(leftOperand / rightOperand);
+                        }
+                    }
                 }
 
                 operatorStack.pop();
@@ -43,7 +62,25 @@ public class MakeMathematicalExpressionFromString {
                 while (!operatorStack.isEmpty() &&
                         (operatorPriorityCheck(operatorStack.peek()) >= operatorPriorityCheck(currentOperator)))
                 {
-                    processOperationOfOperator(operatorStack.pop());
+                    char ch = operatorStack.pop();
+
+                    if (ch =='#')
+                    {
+                        int top = myIntegerStack.pop();
+                        myIntegerStack.push(-top);
+                    }
+                    else
+                    {
+                        int rightOperand = myIntegerStack.pop();
+                        int leftOperand = myIntegerStack.pop();
+
+                        switch (ch) {
+                            case '+' -> myIntegerStack.push(leftOperand + rightOperand);
+                            case '-' -> myIntegerStack.push(leftOperand - rightOperand);
+                            case '*' -> myIntegerStack.push(leftOperand * rightOperand);
+                            case '/' -> myIntegerStack.push(leftOperand / rightOperand);
+                        }
+                    }
                 }
 
                 operatorStack.push(currentOperator);
@@ -67,7 +104,26 @@ public class MakeMathematicalExpressionFromString {
 
         while (!operatorStack.isEmpty())
         {
-            processOperationOfOperator(operatorStack.pop());
+            char ch = operatorStack.pop();
+
+            if (ch =='#')
+            {
+                int top = myIntegerStack.pop();
+                myIntegerStack.push(-top);
+            }
+
+            else
+            {
+                int rightOperand = myIntegerStack.pop();
+                int leftOperand = myIntegerStack.pop();
+
+                switch (ch) {
+                    case '+' -> myIntegerStack.push(leftOperand + rightOperand);
+                    case '-' -> myIntegerStack.push(leftOperand - rightOperand);
+                    case '*' -> myIntegerStack.push(leftOperand * rightOperand);
+                    case '/' -> myIntegerStack.push(leftOperand / rightOperand);
+                }
+            }
         }
     }
 
@@ -80,32 +136,10 @@ public class MakeMathematicalExpressionFromString {
         else if(operator == validOperators[0] || operator == validOperators[1])
             return OperatorPriority.LOWEST_PRIORITY.getPriority();
         else
-            return -1;
-    }
-
-    private void processOperationOfOperator(char op) throws Exception {
-        if (op =='#')
-        {
-            int top = myIntegerStack.pop();
-            myIntegerStack.push(-top);
-        }
-
-        else
-        {
-            int rightOperand = myIntegerStack.pop();
-            int leftOperand = myIntegerStack.pop();
-
-            switch (op) {
-                case '+' -> myIntegerStack.push(leftOperand + rightOperand);
-                case '-' -> myIntegerStack.push(leftOperand - rightOperand);
-                case '*' -> myIntegerStack.push(leftOperand * rightOperand);
-                case '/' -> myIntegerStack.push(leftOperand / rightOperand);
-            }
-        }
+            return OperatorPriority.DEFAULT_PRIORITY.getPriority();
     }
 
     public int getValueOfExpression() throws Exception {
         return myIntegerStack.pop();
     }
-
 }

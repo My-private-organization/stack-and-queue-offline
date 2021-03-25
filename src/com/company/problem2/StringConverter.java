@@ -3,6 +3,7 @@ package com.company.problem2;
 import java.util.Scanner;
 
 public class StringConverter {
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -11,6 +12,7 @@ public class StringConverter {
         MyQueue myQueue = new MyQueue();
 
         int[] letterCount = new int[26];
+
         int length = oldString.length();
 
         char[] ans = new char[length];
