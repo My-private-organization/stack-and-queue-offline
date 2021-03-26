@@ -19,14 +19,14 @@ public class StringConverter {
 
         for(int i = 0; i < length; i++)
         {
-            char ch = oldString.charAt(i);
+            int position = oldString.charAt(i) - 97;
 
-            letterCount[ch - 'a']++;
+            letterCount[position] = letterCount[position] + 1;
 
-            if(letterCount[ch - 'a'] == 1)
-                myQueue.enQueue(ch);
+            if(letterCount[position] == 1)
+                myQueue.enQueue(oldString.charAt(i));
 
-            while(!myQueue.isEmpty() && letterCount[myQueue.peek() - 'a'] > 1)
+            while(!myQueue.isEmpty() && letterCount[myQueue.peek() - 97] > 1)
                 myQueue.deQueue();
 
             if(myQueue.isEmpty())
