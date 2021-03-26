@@ -1,8 +1,8 @@
-package com.company.problem1;
+package com.company;
 
 import java.util.Scanner;
 
-public class StackProblem {
+public class Problem1 {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);

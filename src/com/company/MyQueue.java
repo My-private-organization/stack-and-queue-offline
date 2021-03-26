@@ -1,4 +1,4 @@
-package com.company.problem2;
+package com.company;
 
 import java.util.LinkedList;
 

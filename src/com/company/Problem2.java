@@ -1,8 +1,8 @@
-package com.company.problem2;
+package com.company;
 
 import java.util.Scanner;
 
-public class StringConverter {
+public class Problem2 {
 
     public static void main(String[] args) {
 

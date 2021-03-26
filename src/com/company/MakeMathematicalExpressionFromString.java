@@ -1,4 +1,4 @@
-package com.company.problem1;
+package com.company;
 
 public class MakeMathematicalExpressionFromString {
 
